@@ -1,65 +1,112 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
+  const [openProduk, setOpenProduk] = useState(false);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      {/* NAVBAR */}
+      <nav className="w-full bg-black-#070707 text-white py-6">
+        <div className="max-w-[1312px] mx-auto flex justify-between items-center px-4">
+          {/* Logo */}
+          <h1>
+            <Link href="/" className="text-3xl font-regular tracking-wide">
+              QueenWrap
+            </Link>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          {/* Menu */}
+          <ul className="flex gap-10 text-lg relative">
+            {/* PRODUK (Dropdown) */}
+            <li className="relative">
+              <button
+                onClick={() => setOpenProduk(!openProduk)}
+                className="hover:text-yellow-400 flex items-center gap-1"
+              >
+                Produk
+              </button>
+
+              {/* DROPDOWN */}
+              {openProduk && (
+                <div className="absolute top-8 left-0 bg-white text-black shadow-xl rounded-md py-4 w-48 z-50">
+                  <Link
+                    href="/produk/ppf"
+                    className="block px-4 py-2 hover:bg-gray-200"
+                  >
+                    PPF
+                  </Link>
+
+                  <Link
+                    href="/produk/sticker-premium"
+                    className="block px-4 py-2 hover:bg-gray-200"
+                  >
+                    Sticker Premium
+                  </Link>
+
+                  <Link
+                    href="/produk/cutting-sticker"
+                    className="block px-4 py-2 hover:bg-gray-200"
+                  >
+                    Cutting Sticker
+                  </Link>
+                </div>
+              )}
+            </li>
+
+            {/* MENU LAIN */}
+
+            <li>
+              <Link className="hover:text-yellow-400" href="/tentang">
+                Tentang
+              </Link>
+            </li>
+
+            <li>
+              <Link className="hover:text-yellow-400" href="/garansi">
+                Garansi
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      {/* HERO SECTION */}
+      <div className="relative w-full min-h-[90vh] flex flex-col items-center justify-center text-center bg-black">
+        {/* Background Image */}
+        <Image
+          src={"/image/mobil-hero-section.jpg"}
+          alt="mobil sedan"
+          fill
+          className="object-cover"
+        />
+
+        {/* Title */}
+        <h1 className="relative h-screen flex justify-center text-[64px] md:text-6xl font-semi-bold mb-1 mt-[60px] text-white">
+          Investasi Terbaik untuk Keindahan Mobil Anda
+        </h1>
+
+        {/* Content Row */}
+        <div className="absolute w-full max-w-[1300px] flex justify-between px-6 md:px-12">
+          {/* Left Text */}
+          <p className="text-gray-200 max-w-xs text-left">
+            Lapisan PPF premium yang menjaga nilai dan kilau mobil tetap
+            maksimal, setiap hari.
           </p>
+
+          {/* Right Button */}
+          <div>
+            <a
+              href="/booking"
+              className="px-8 py-4 border border-white rounded-xl text-lg text-white hover:bg-white hover:text-black transition"
+            >
+              Booking Sekarang
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+    </>
   );
 }
