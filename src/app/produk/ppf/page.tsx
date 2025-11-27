@@ -66,92 +66,67 @@ export default function PpfPage() {
 
       {/* SECTION FITUR */}
       <section className="w-full bg-black-2 text-white px-[64px]">
-        <div className="max-w-[1312px] mx-auto grid grid-cols-1 md:grid-cols-2 space-y-3 items-center">
-          {/* LEFT – TEXT LIST */}
-          <div className="space-y-12">
-            <h2 className="text-[42px] font-Inter font-semibold mb-10">
-              Fitur
-            </h2>
+        <div className="max-w-[1312px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          {/* LEFT SIDE – FITUR LIST */}
+          <div className="space-y-14">
+            <h2 className="text-[50px] font-Inter font-semibold">Fitur</h2>
 
-            {/* ITEM 01 */}
-            <div>
-              <p className="text-gray-400 text-[18px] font-semibold tracking-wide">
-                01.
-              </p>
-              <h3 className="text-[20px] font-semibold mt-1">
-                Tahan Noda Air (Water Stain-Resistant)
-              </h3>
-              <p className="text-[16px] text-gray-300 mt-3 leading-relaxed max-w-[460px]">
-                Lapisan PPF memiliki sifat super hidrofobik yang mampu mencegah
-                timbulnya noda air.
-              </p>
-              <div className="h-px w-[430px] bg-white/10 mt-6"></div>
-            </div>
+            {/* ITEM TEMPLATE */}
+            {[
+              {
+                no: "01.",
+                title: "Tahan Noda Air (Water Stain-Resistant)",
+                text: "Lapisan PPF memiliki sifat super hidrofobik yang mampu mencegah timbulnya noda air.",
+              },
+              {
+                no: "02.",
+                title: "Anti-Menguning (Anti-Yellowing)",
+                text: "Film PPF mampu memblokir hampir 99% sinar UV yang dapat merusak dan menguningkan cat mobil Anda.",
+              },
+              {
+                no: "03.",
+                title: "Fitur Self-Healing",
+                text: "PPF memiliki kemampuan memperbaiki diri secara otomatis untuk melindungi cat asli mobil Anda.",
+              },
+              {
+                no: "04.",
+                title: "Anti-Kontaminasi (Anti-Contamination)",
+                text: "PPF menawarkan perlindungan terbaik terhadap kotoran membandel dengan teknologi anti-fouling.",
+              },
+              {
+                no: "05.",
+                title: "Garansi",
+                text: "PPF dilengkapi dengan garansi 5 tahun yang melindungi dari delaminasi, perubahan warna, gelembung, dan retak.",
+              },
+            ].map((item, index) => (
+              <div key={index} className="flex gap-6">
+                {/* NUMBER – sejajar kiri */}
+                <p className="text-white text-[30px] font-semibold w-[50px]">
+                  {item.no}
+                </p>
 
-            {/* ITEM 02 */}
-            <div>
-              <p className="text-gray-400 text-[18px] font-semibold tracking-wide">
-                02.
-              </p>
-              <h3 className="text-[20px] font-semibold mt-1">
-                Anti-Menguning (Anti-Yellowing)
-              </h3>
-              <p className="text-[16px] text-gray-300 mt-3 leading-relaxed max-w-[460px]">
-                Film PPF mampu memblokir hampir 99% sinar UV yang dapat merusak
-                dan menguningkan cat mobil.
-              </p>
-              <div className="h-px w-[430px] bg-white/10 mt-6"></div>
-            </div>
+                {/* TEXT BLOCK */}
+                <div>
+                  <h3 className="text-[25px] font-semibold">{item.title}</h3>
+                  <p className="text-[18px] text-justify text-white mt-3 leading-relaxed max-w-[460px]">
+                    {item.text}
+                  </p>
 
-            {/* ITEM 03 */}
-            <div>
-              <p className="text-gray-400 text-[18px] font-semibold tracking-wide">
-                03.
-              </p>
-              <h3 className="text-[20px] font-semibold mt-1">
-                Fitur Self-Healing
-              </h3>
-              <p className="text-[16px] text-gray-300 mt-3 leading-relaxed max-w-[460px]">
-                PPF memiliki kemampuan memperbaiki diri secara otomatis untuk
-                melindungi cat asli mobil Anda.
-              </p>
-              <div className="h-px w-[430px] bg-white/10 mt-6"></div>
-            </div>
-
-            {/* ITEM 04 */}
-            <div>
-              <p className="text-gray-400 text-[18px] font-semibold tracking-wide">
-                04.
-              </p>
-              <h3 className="text-[20px] font-semibold mt-1">
-                Anti-Kontaminasi (Anti-Contamination)
-              </h3>
-              <p className="text-[16px] text-gray-300 mt-3 leading-relaxed max-w-[460px]">
-                PPF menawarkan perlindungan terbaik terhadap kotoran membandel
-                dengan teknologi anti-fouling.
-              </p>
-              <div className="h-px w-[430px] bg-white/10 mt-6"></div>
-            </div>
-
-            {/* ITEM 05 */}
-            <div>
-              <p className="text-gray-400 text-[18px] font-semibold tracking-wide">
-                05.
-              </p>
-              <h3 className="text-[20px] font-semibold mt-1">Garansi</h3>
-              <p className="text-[16px] text-gray-300 mt-3 leading-relaxed max-w-[460px]">
-                PPF dilengkapi dengan garansi 5 tahun yang melindungi dari
-                delaminasi, perubahan warna, gelembung, dan retak.
-              </p>
-            </div>
+                  {/* Garis divider KECUALI item terakhir */}
+                  {index !== 4 && (
+                    <div className="h-px bg-white/10 w-[460PX] mt-6"></div>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* RIGHT – IMAGE */}
-          <div className="w-full flex items-end space-y-1 md:justify-end">
+          {/* RIGHT SIDE – IMAGE */}
+          <div className="flex justify-end items-center">
             <img
               src="/image/fitur-ppf.jpg"
-              alt="Instalasi PPF"
-              className="w-full object-right"
+              alt="Fitur PPF"
+              className="w-full h-auto object-cover object-right"
             />
           </div>
         </div>
@@ -185,7 +160,7 @@ export default function PpfPage() {
             href="https://wa.me/6285282946930?text=Halo%20QueenWrap,%20Saya%20butuh%20layanan%20home%20service"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block font-Inter px-8 py-3 text-[20px] tracking-widest border border-white rounded-xl hover:bg-red-600 hover:border-red-600 hover:text-white transition duration-300"
+            className="inline-block font-Inter px-8 py-3 text-[20px] tracking-widest border border-red rounded-xl hover:bg-red hover:border-red hover:text-white transition duration-300"
           >
             Panggil Tim Kami
           </a>
